@@ -13,7 +13,7 @@ export default defineConfig({
         react(),
         typescript({
             target: "es5",
-            rootDir: resolve("packages/"),
+            rootDir: resolve("packages/ReactBentoGrid"),
             declaration: true,
             declarationDir: resolve("lib"),
             exclude: resolve("node_modules/**"),

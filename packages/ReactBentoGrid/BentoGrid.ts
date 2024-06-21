@@ -13,6 +13,7 @@ export interface BentoGridConfig {
     breakpoints?: Record<number, Breakpoint>;
     breakpointReference?: "target" | "window";
     balanceFillers?: boolean;
+    fillerClassName?: string;
 }
 
 interface Breakpoint {
@@ -42,6 +43,7 @@ class BentoGrid {
             breakpoints: {},
             balanceFillers: false,
             breakpointReference: "target",
+            fillerClassName: "bento-filler",
             ...bentoGridConfig,
         };
 
@@ -127,7 +129,7 @@ class BentoGrid {
 
         this.gridContainer.style.display = "grid";
         this.gridContainer.style.gridTemplateColumns = `repeat(${totalColumns}, minmax(${breakpoint.minCellWidth}px, 1fr))`;
-        this.gridContainer.style.gridGap = `${breakpoint.cellGap}px`;
+        this.gridContainer.style.gap = `${breakpoint.cellGap}px`;
 
         const containerWidth = this.gridContainer.clientWidth;
         const cellWidth =
@@ -304,18 +306,24 @@ class BentoGrid {
                         }
 
                         let filler: HTMLElement;
+
                         if (this.fillers!.length > 0) {
                             filler = this.fillers![fillerIndex].cloneNode(
                                 true
                             ) as HTMLElement;
+
                             fillerIndex =
                                 (fillerIndex + 1) % this.fillers!.length;
-                            filler.style.display = "block";
+
+                            console.log(filler.style.display);
+
+                            // let config.fillerClassName to handle ths display style:
+                            filler.style.display = null;
                         } else {
                             filler = document.createElement("div");
                         }
 
-                        filler.classList.add("bento-filler");
+                        filler.classList.add(this.config.fillerClassName);
                         filler.style.gridColumn = `${
                             column + 1
                         } / span ${gridColumnSpan}`;

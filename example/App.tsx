@@ -114,6 +114,8 @@ function App() {
                     Filler
                 </GridFiller>
             </ReactBentoGrid>
+            <h3 style={{ textAlign: "left", margin: "0 20px" }}>Installation</h3>
+            <CodeDisplay code={`npm install react-bento-grid`} language="bash"></CodeDisplay>
             <h3 style={{ textAlign: "left", margin: "0 20px" }}>Basic Usage</h3>
             <CodeDisplay code={code}></CodeDisplay>
         </>

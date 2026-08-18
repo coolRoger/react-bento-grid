@@ -61,3 +61,7 @@
 .item {
     background-color: lightblue;
 }
+
+.cesium-widget-credits{
+    display: none !important;
+}

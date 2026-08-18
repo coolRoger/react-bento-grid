@@ -6,6 +6,7 @@ import ReactBentoGrid, {
     GridItem,
 } from "../packages/ReactBentoGrid";
 import CodeDisplay from "./components/CodeDisplay";
+import CesiumBox from "./components/CesiumBox";
 
 function App() {
     const config: BentoGridConfig = {
@@ -82,7 +83,10 @@ function App() {
                     justifyContent: "end",
                 }}
             >
-                <a href="https://github.com/coolRoger/react-bento-grid" style={{ color: "inherit", textDecoration: "none" }}>
+                <a
+                    href="https://github.com/coolRoger/react-bento-grid"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                >
                     Github
                 </a>
             </div>
@@ -93,7 +97,7 @@ function App() {
                 className="react-bento-grid"
             >
                 <GridItem className="grid-item item" columnSpan={2} rowSpan={2}>
-                    Item 1
+                    <CesiumBox />
                 </GridItem>
                 <GridItem className="grid-item item" columnSpan={2} rowSpan={1}>
                     Item 2
@@ -114,10 +118,15 @@ function App() {
                     Filler
                 </GridFiller>
             </ReactBentoGrid>
-            <h3 style={{ textAlign: "left", margin: "0 20px" }}>Installation</h3>
-            <CodeDisplay code={`npm install react-bento-grid`} language="bash"></CodeDisplay>
             <h3 style={{ textAlign: "left", margin: "0 20px" }}>Basic Usage</h3>
             <CodeDisplay code={code}></CodeDisplay>
+            <h3 style={{ textAlign: "left", margin: "0 20px" }}>
+                Installation
+            </h3>
+            <CodeDisplay
+                code={`npm install react-bento-grid`}
+                language="bash"
+            ></CodeDisplay>
         </>
     );
 }

@@ -1,7 +1,8 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react";
 import typescript from "@rollup/plugin-typescript";
+import cesium from 'vite-plugin-cesium';
 
 function resolve(str: string) {
     return path.resolve(__dirname, str);
@@ -11,6 +12,7 @@ function resolve(str: string) {
 export default defineConfig({
     plugins: [
         react(),
+        cesium(),
         typescript({
             target: "es5",
             rootDir: resolve("packages/ReactBentoGrid"),
@@ -18,7 +20,7 @@ export default defineConfig({
             declarationDir: resolve("lib"),
             exclude: resolve("node_modules/**"),
             allowSyntheticDefaultImports: true,
-        }),
+        }) as Plugin,
     ],
     build: {
         // 打包输出的目录
